@@ -4,26 +4,35 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { LoadingProvider } from './context/LoadingContext';
 import Error_404 from './components/pages/Error_404';
+import { useAuth } from "./context/AuthContext";
+import LoadingSpinner from "./components/components/LoadingSpinner";
 
 
 function App() {
-
+  const { loading } = useAuth();
   return (
     <LoadingProvider>
 
       <BrowserRouter>
         <ToastContainer />
-        <Routes>
-                
-          {/* All Routes */}
-          {routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
-          ))}
 
-          {/* Error 404 */}
-          <Route path="*" element={<Error_404 />} />
+        {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <Routes>
+                    
+              {/* All Routes */}
+              {routes.map((route, index) => (
+                <Route key={index} path={route.path} element={route.element} />
+              ))}
 
-        </Routes>
+              {/* Error 404 */}
+              <Route path="*" element={<Error_404 />} />
+
+            </Routes>
+          )
+        }
+        
       </BrowserRouter>
 
     </LoadingProvider>
