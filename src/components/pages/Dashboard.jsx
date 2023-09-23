@@ -45,11 +45,10 @@ function Dashboard({userData}) {
         </div>
 
 
-        <div className="tasks grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 py-10 gap-7">
+        <div className="tasks  py-10 gap-7">
           {
-            allTasks ? allTasks.map(task => <SingleTask key={task._id} taskData={task}/>) : <NoTask />  
+            !allTasks || !allTasks.length ? <NoTask /> : <div className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4'>{allTasks.map(task => <SingleTask key={task._id} taskData={task}/>)  }</div>
           }
-
         </div>
 
       </div>
