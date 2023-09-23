@@ -21,6 +21,7 @@ const routes = [
   createRoute("/login", Login, "Login", false),
   createRoute("/register", Register, "Register", false),
   createRoute("/", Dashboard, "Dashboard", true),
+  createRoute("/logout", Dashboard, "Dashboard", true),
 
 ];
 

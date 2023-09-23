@@ -23,10 +23,10 @@ export function AuthProvider({ children }) {
       console.error('Error fetching authenticated data:', error);
 
       // when auth fails
-      // setUser(null);
-      // setIsLoggedIn(false);
-      // setToken(null);
-      // localStorage.removeItem('token');
+      setUser(null);
+      setIsLoggedIn(false);
+      setToken(null);
+      localStorage.removeItem('token');
 
     } finally {
       setLoading(false);
@@ -37,7 +37,7 @@ export function AuthProvider({ children }) {
     getItem: async (key) => {
       return await Promise.resolve(localStorage.getItem(key));
     },
-    // Implement other methods similarly if needed
+    
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem('token', JSON.stringify(newToken));
     setToken(newToken);
     setIsLoggedIn(true);
-    // fetchUserData();
+    fetchUserData();
     toast.success(response.message);
   };
 

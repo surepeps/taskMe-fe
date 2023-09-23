@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 
 export const responseCatcher = (error) => {
   const status = error.response ? error.response.status : null;
-  const errorMessage = error.response ? error.response.data.message : null;
+  const errorMessage = error.response ? error.response.data.error : null;
 
   switch (status) {
     case 200:
